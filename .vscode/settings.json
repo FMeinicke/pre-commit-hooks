@@ -1,0 +1,13 @@
+{
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "explicit",
+        },
+        "editor.wordWrapColumn": 80,
+        "editor.rulers": [
+            80
+        ],
+    },
+}
