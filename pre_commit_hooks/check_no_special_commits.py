@@ -1,22 +1,32 @@
 from __future__ import annotations
 
+import argparse
 import os
 import subprocess
 import sys
 from typing import Sequence
 
 
-def check_no_special_commits() -> int:
+def check_no_special_commits(prefixes: Sequence[str] | None = None) -> int:
     """
     Checks that no commit starts with a special string that would indicate that
     the commit is a fixup, squash or amend commit. This is useful to prevent
     developers from pushing these commits to the remote repository.
+
+    Parameters
+    ----------
+    prefixes : Sequence[str], optional
+        A list of special strings that should be checked for. Default is
+        ['squash! ', 'fixup! ', 'amend! ']
 
     Returns
     -------
     int
         0 if all commits are valid, 1 otherwise
     """
+
+    if prefixes is None or not prefixes:
+        prefixes = ["squash! ", "fixup! ", "amend! "]
 
     ret = 0
 
@@ -38,11 +48,7 @@ def check_no_special_commits() -> int:
             .decode()
             .strip()
         )
-        if (
-            commit_message.startswith("squash! ")
-            or commit_message.startswith("fixup! ")
-            or commit_message.startswith("amend! ")
-        ):
+        if any(commit_message.startswith(prefix) for prefix in prefixes):
             print(
                 f"commit {commit} starts with a special string",
                 file=sys.stderr,
@@ -55,7 +61,15 @@ def check_no_special_commits() -> int:
 
 
 def main(argv: Sequence[str] | None = None) -> int:  # noqa: D103
-    return check_no_special_commits()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "prefix",
+        nargs="*",
+        help="Special strings that should be checked for",
+    )
+    args = parser.parse_args(argv)
+
+    return check_no_special_commits(args.prefix)
 
 
 if __name__ == "__main__":

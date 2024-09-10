@@ -1,7 +1,11 @@
 - id: check-no-special-commits
-  name: Check for special ("squash! ", "fixup! ", or "amend! ") commits
-  description: prevents unintentional pushes of commits with special prefixes that indicate they should be squashed, fixed up, or amended.
+  name: Check for special commits
+  description: prevents unintentional pushes of commits with special prefixes.
   entry: check-no-special-commits
+  args:
+    - "squash! "
+    - "fixup! "
+    - "amend! "
   language: python
   pass_filenames: false
   require_serial: true
