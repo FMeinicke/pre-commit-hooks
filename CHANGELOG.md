@@ -18,6 +18,11 @@ Types of changes
 
 ## [Unreleased]
 
+### Fixed
+
+- `check_no_special_commits` will default to check all commits reachable from the current `HEAD` if pre-commit doesn't
+  provide a `from_ref` and `to_ref` (which is the case for the very first push in a new repo).
+
 ## [v0.1.0] &ndash; 2024-09-10
 
 ### Added

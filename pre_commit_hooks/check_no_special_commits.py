@@ -32,9 +32,11 @@ def check_no_special_commits(prefixes: Sequence[str] | None = None) -> int:
 
     # Get the list of commits to be pushed
     from_ref = os.environ.get("PRE_COMMIT_FROM_REF")
-    to_ref = os.environ.get("PRE_COMMIT_TO_REF")
+    to_ref = os.environ.get("PRE_COMMIT_TO_REF", "HEAD")
     commit_list = (
-        subprocess.check_output(["git", "rev-list", f"{from_ref}..{to_ref}"])
+        subprocess.check_output(
+            ["git", "rev-list", f"{from_ref}..{to_ref}" if from_ref else to_ref]
+        )
         .decode()
         .splitlines()
     )
