@@ -18,6 +18,8 @@ Types of changes
 
 ## [Unreleased]
 
+## [v0.1.1] &ndash; 2024-11-04
+
 ### Fixed
 
 - `check_no_special_commits` will default to check all commits reachable from the current `HEAD` if pre-commit doesn't
@@ -30,4 +32,5 @@ Types of changes
 - `check-no-special-commits`: prevent pushing commits that contain certain "special" prefixes
 
 [Unreleased]: https://github.com/FMeinicke/pre-commit-hooks/commits/main/
+[v0.1.1]: https://github.com/FMeinicke/pre-commit-hooks/releases/tag/v0.1.1
 [v0.1.0]: https://github.com/FMeinicke/pre-commit-hooks/releases/tag/v0.1.0
