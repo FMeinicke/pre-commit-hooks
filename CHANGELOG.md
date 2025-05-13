@@ -18,6 +18,12 @@ Types of changes
 
 ## [Unreleased]
 
+## [v0.1.2] &ndash; 2025-05-13
+
+### Changed
+
+- Change hook stage `push` to `pre-push` for pre-commit v3.2.0.
+
 ## [v0.1.1] &ndash; 2024-11-04
 
 ### Fixed
@@ -32,5 +38,6 @@ Types of changes
 - `check-no-special-commits`: prevent pushing commits that contain certain "special" prefixes
 
 [Unreleased]: https://github.com/FMeinicke/pre-commit-hooks/commits/main/
+[v0.1.2]: https://github.com/FMeinicke/pre-commit-hooks/releases/tag/v0.1.2
 [v0.1.1]: https://github.com/FMeinicke/pre-commit-hooks/releases/tag/v0.1.1
 [v0.1.0]: https://github.com/FMeinicke/pre-commit-hooks/releases/tag/v0.1.0
