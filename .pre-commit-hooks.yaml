@@ -9,4 +9,4 @@
   language: python
   pass_filenames: false
   require_serial: true
-  stages: [push, manual]
+  stages: [pre-push, manual]
